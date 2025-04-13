@@ -3,12 +3,12 @@
 .Settings {
   display: flex;
   font-size: 1.25rem;
+  align-items: center;
 
   .theme-toggler {
     $size: 25px;
     .theme-buttons {
       cursor: pointer;
-
       display: flex;
       position: relative;
       height: $size;
@@ -29,25 +29,23 @@
   .settings-btn {
     margin-left: 1rem;
     cursor: pointer;
+    font-size: 1.25rem;
   }
   .settings-menu {
     position: absolute;
     z-index: 2;
     top: calc($header-height + 0.25rem);
     right: 2rem;
-
     border-radius: 0.5rem;
     background-color: var(--header-bg-color);
     width: 250px;
-
     padding: 0.5rem;
     font-size: 1rem;
-
     @include no-text-select;
-
     transform: scale(0.1);
     visibility: hidden;
     transition: all 0.2s ease-in-out;
+
     &.open {
       transform: scale(1);
       visibility: visible;
@@ -69,12 +67,93 @@
           margin: 0.25rem 0.25rem 0.25rem 0;
           border: 1px solid var(--border-color);
           border-radius: 0.5rem;
-
           cursor: pointer;
 
           &.active {
             background-color: var(--primary-text-color);
             color: var(--main-bg-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Mobile screens (max-width: 768px)
+@media screen and (max-width: 768px) {
+  .Settings {
+    font-size: 1.1rem;
+    margin: 0.25rem 0; // Vertical spacing in column layout
+    justify-content: center; // Center in column
+
+    .theme-toggler {
+      $size: 22px;
+      .theme-buttons {
+        height: $size;
+        width: $size;
+      }
+    }
+    .settings-btn {
+      margin-left: 0.75rem;
+      font-size: 1.1rem;
+    }
+    .settings-menu {
+      width: 90%; // Match search width
+      max-width: 200px;
+      right: 50%;
+      transform: translateX(50%); // Center horizontally
+      top: auto; // Let position adjust dynamically
+      padding: 0.4rem;
+      font-size: 0.9rem;
+
+      .measurement-systems {
+        padding: 0.4rem;
+
+        .systems {
+          .system {
+            width: 3.5rem;
+            height: 1.8rem;
+            margin: 0.2rem 0.2rem 0.2rem 0;
+            font-size: 0.85rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Very small screens (max-width: 480px)
+@media screen and (max-width: 480px) {
+  .Settings {
+    font-size: 1rem;
+    margin: 0.2rem 0;
+
+    .theme-toggler {
+      $size: 20px;
+      .theme-buttons {
+        height: $size;
+        width: $size;
+      }
+    }
+    .settings-btn {
+      margin-left: 0.5rem;
+      font-size: 1rem;
+    }
+    .settings-menu {
+      width: 95%;
+      max-width: 180px;
+      padding: 0.3rem;
+      font-size: 0.85rem;
+
+      .measurement-systems {
+        padding: 0.3rem;
+
+        .systems {
+          .system {
+            width: 3rem;
+            height: 1.6rem;
+            margin: 0.15rem 0.15rem 0.15rem 0;
+            font-size: 0.8rem;
           }
         }
       }

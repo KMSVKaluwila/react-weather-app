@@ -1,5 +1,17 @@
 @use '../variables/variables' as *;
 
+.hide-scrollbar-vertical {
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+
 .Main {
   margin: 0 7rem;
   padding: 20px 0;

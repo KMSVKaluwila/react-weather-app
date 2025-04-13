@@ -5,6 +5,9 @@
   border: 1px solid var(--secondary-text-color);
   border-radius: 20px;
   padding: 0 1rem;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
 
   .search-icon,
   .search-input input {
@@ -14,9 +17,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     font-size: 1.3rem;
-    padding-right: 1rem;
+    padding-right: 0.75rem;
   }
   .search-input input {
     background-color: transparent;
@@ -24,31 +26,95 @@
     border: none;
     outline: none;
     font-size: 1rem;
+    width: 100%;
   }
 }
+
 .search-results {
   border-radius: 0.5rem;
-
   background-color: var(--header-bg-color);
-
   position: absolute;
   z-index: 1;
   top: calc($header-height + 0.25rem);
-
   width: 50%;
   max-height: 50vh;
-
   overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
 
   .results-container {
     .result {
       padding: 1rem;
       font-size: 1.1rem;
-
       cursor: pointer;
 
       &:hover {
         background-color: var(--border-color);
+      }
+    }
+  }
+}
+
+// Mobile screens (max-width: 768px)
+@media screen and (max-width: 768px) {
+  .search-container {
+    max-width: 90%; // Slightly less than full width for aesthetics
+    padding: 0 0.5rem;
+    border-radius: 15px;
+    margin: 0.25rem 0; // Vertical spacing in column layout
+
+    .search-icon {
+      font-size: 1.1rem;
+      padding-right: 0.5rem;
+    }
+    .search-input input {
+      font-size: 0.9rem;
+      height: 36px;
+    }
+  }
+
+  .search-results {
+    width: 90%;
+    top: auto; // Let position be controlled by DOM flow
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); // Center horizontally
+    max-height: 40vh;
+
+    .results-container {
+      .result {
+        padding: 0.75rem;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Very small screens (max-width: 480px)
+@media screen and (max-width: 480px) {
+  .search-container {
+    max-width: 95%;
+    padding: 0 0.4rem;
+    margin: 0.2rem 0;
+
+    .search-icon {
+      font-size: 1rem;
+      padding-right: 0.4rem;
+    }
+    .search-input input {
+      font-size: 0.85rem;
+      height: 32px;
+    }
+  }
+
+  .search-results {
+    width: 95%;
+    max-height: 35vh;
+
+    .results-container {
+      .result {
+        padding: 0.5rem;
+        font-size: 0.9rem;
       }
     }
   }

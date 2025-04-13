@@ -1,5 +1,15 @@
 @use '../variables/variables' as *;
 
+.hide-scrollbar {
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE & Edge
+
+  &::-webkit-scrollbar {
+    display: none; // Chrome, Safari, Opera
+  }
+}
+
+
 .Forecast {
   margin-top: 2rem;
   @include no-text-select;
@@ -21,6 +31,7 @@
 
       padding: 0.75rem;
       margin-right: 0.75rem;
+      margin-bottom: 0.75rem;
 
       min-width: 115px;
 
@@ -31,27 +42,39 @@
         position: absolute;
         top: -1.5rem;
       }
+
       .icon-temp {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 0.75rem 0;
+
         img {
           width: 40px;
           margin-right: 0.25rem;
         }
       }
+
       .wind {
         margin-top: 0.25rem;
         display: flex;
+
         .speed {
           margin-right: 0.25rem;
         }
+
         .wind-dir {
           font-size: 0.8rem;
           margin-left: 0.25rem;
         }
       }
+    }
+
+    .widget:hover {
+      border-color: var(--hover-border-color);
+      background-color: var(--hover-background-color);
+      transform: scale(1.02);
+      transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
     }
   }
 }
